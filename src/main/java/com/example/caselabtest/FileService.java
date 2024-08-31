@@ -2,12 +2,13 @@ package com.example.caselabtest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.Base64;
 import java.util.Optional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-
 
 @Service
 public class FileService {
@@ -43,12 +44,12 @@ public class FileService {
     public Page<DataTransferObject> getAllFiles(int page, int size) {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by("creationDate").descending());
         return fileDBWork.findAll(pageRequest).map(fileStructure -> {
-                    DataTransferObject dto = new DataTransferObject();
-                    dto.setTitle(fileStructure.getTitle());
-                    dto.setDescription(fileStructure.getDescription());
-                    dto.setCreationDate(fileStructure.getCreationDate());
-                    dto.setFileData(Base64.getEncoder().encodeToString(fileStructure.getFileData()));
-                    return dto;
+            DataTransferObject dto = new DataTransferObject();
+            dto.setTitle(fileStructure.getTitle());
+            dto.setDescription(fileStructure.getDescription());
+            dto.setCreationDate(fileStructure.getCreationDate());
+            dto.setFileData(Base64.getEncoder().encodeToString(fileStructure.getFileData()));
+            return dto;
         });
     }
 }

@@ -2,10 +2,9 @@ package com.example.caselabtest;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import java.time.LocalDateTime;
 
 @Entity
-@Table(name= "files")
+@Table(name = "files")
 @Data
 public class FileStructure {
     @Id

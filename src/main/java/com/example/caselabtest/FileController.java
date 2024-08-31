@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
+
 import java.util.Optional;
 
 @RestController
@@ -23,7 +24,7 @@ public class FileController {
         Optional<DataTransferObject> dataTransferObjectOptional = fileService.getById(id);
         if (dataTransferObjectOptional.isPresent()) {
             return ResponseEntity.ok(dataTransferObjectOptional.get());
-        }else{
+        } else {
             return ResponseEntity.notFound().build();
         }
 
